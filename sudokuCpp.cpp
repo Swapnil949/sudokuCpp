@@ -97,8 +97,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // Store instance handle in our global variable
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,
+      CW_USEDEFAULT, 0, 500, 500, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
@@ -106,6 +106,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    }
 
    ShowWindow(hWnd, nCmdShow);
+
+   // hide the menu bar
+   SetMenu(hWnd, NULL);
+
+
    UpdateWindow(hWnd);
 
    return TRUE;
